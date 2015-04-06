@@ -20,7 +20,9 @@ class Photos(BaseModel):
 
     id = Column('id', INTEGER, primary_key=True)
     hash_id = Column('hash_id', VARCHAR(128), nullable=False)
-    photo_name = Column('photo_name', VARCHAR(128))
+    file_name = Column('file_name', VARCHAR(128))
+    size = Column('size', VARCHAR(64))
+    image_info = Column('image_info', VARCHAR(256))
     tags = Column('tags', VARCHAR(256))
     remark = Column('remark', VARCHAR(1024))
     upload_time = Column('upload_time', DATETIME, default=datetime.now)

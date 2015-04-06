@@ -6,10 +6,6 @@ Date   : 15-4-6
 Email  : luffy.liu@maichuang.net
 '''
 
-import time
-from qiniu import Auth
-from hashlib import md5
-from src.settings import AK, SK, BUCKET_NAME, UPLOAD_PYOLIC
 from src.handlers.basic import BasicHandler
 from src.models.photo import Photos
 
@@ -22,11 +18,22 @@ class UploadCallback(BasicHandler):
         if not self.post_check():
             return
 
-        self.logger.info(self.request.query)
-        self.logger.info('-------------------------')
-        self.logger.info(self.request.query_arguments)
-        self.logger.info('-------------------------')
-        self.logger.info(self.request.body)
-        self.logger.info('-------------------------')
-        self.logger.info(self.request.body_arguments)
-        self.return_json()
+        self.start_transaction()
+        try:
+            photo = Photos()
+            photo.filename = self._request_body['filename']
+            photo.size = self._request_body['fsize']
+            photo.image_info = self._request_body['image_info']
+            photo.hash_id = self._request_body['hash_id']
+            photo.tags = self._request_body['tags']
+            photo.remark = self._request_body['remark']
+            self.db_session.add(photo)
+            self.db_session.commit()
+        except Exception as e:
+            self.logger.exception("%s %s Error: " % (self.__class__.__name__, self.request.method))
+            self.return_json(500, data=u'服务器错误： %s' % str(e))
+            self.db_session.rollback()
+            return
+
+        self.end_transaction()
+        self.return_json(data=photo.json())

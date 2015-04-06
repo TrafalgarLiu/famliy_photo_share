@@ -8,6 +8,7 @@ Email  : luffy.liu@maichuang.net
 from tornado.options import define
 
 define('port', default=9999, type=int, help='Tornado will provide service on the given port')
+define('initdb', default=False, type=bool, help='Init the database')
 
 #mysql setting
 _db_config = {

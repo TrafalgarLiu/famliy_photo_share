@@ -12,7 +12,6 @@ from src.settings import AK, SK
 from tornado.options import options
 from src.mappings import patterns
 from tornado.httpserver import HTTPServer
-from motorengine.connection import connect
 from src.models.base import get_session
 from tornado.log import access_log
 
@@ -42,6 +41,13 @@ if __name__ == '__main__':
         exit()
 
     options.parse_command_line()
+
+    if options.initdb:
+        from src.models import  *
+        from src.models.base import init_db
+        init_db()
+        exit()
+
     http_server = HTTPServer(App())
     http_server.listen(options.port)
     io_loop = tornado.ioloop.IOLoop.instance()

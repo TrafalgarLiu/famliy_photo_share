@@ -19,8 +19,9 @@ BASE_HTML = """
     <input name="token" type="hidden" value="%s">
     <input name="file" type="file" />
     <input type="submit" value="Submit" />
+    <input name="x:remark" type="hidden" value="">
+    <input name="x:tags" type="hidden" value="a,b">
     <input name="key" type="hidden" value="%s">
-
     </form>
 """
 

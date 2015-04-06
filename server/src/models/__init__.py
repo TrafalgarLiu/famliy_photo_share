@@ -6,8 +6,4 @@ Date   : 15-4-5
 Email  : luffy.liu@maichuang.net
 '''
 
-# sys
-
-#thirdparty
-
-#self program
+from src.models.photo import Photos
