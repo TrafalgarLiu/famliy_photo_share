@@ -8,6 +8,7 @@ Email  : luffy.liu@maichuang.net
 
 from src.handlers.basic import BasicHandler
 from src.models.photo import Photos
+from src.models.tags import Tags
 
 class UploadCallback(BasicHandler):
 
@@ -23,10 +24,11 @@ class UploadCallback(BasicHandler):
             photo = Photos()
             photo.filename = self._request_body['filename']
             photo.size = self._request_body['fsize']
-            photo.image_info = self._request_body['image_info']
+            photo.image_info = self._request_body['imageInfo']
             photo.hash_id = self._request_body['hash_id']
             photo.tags = self._request_body['tags']
             photo.remark = self._request_body['remark']
+            Tags.add_tag(self._request_body['tags'])
             self.db_session.add(photo)
             self.db_session.commit()
         except Exception as e:

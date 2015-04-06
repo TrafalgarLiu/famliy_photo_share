@@ -36,5 +36,5 @@ BUCKET_NAME = 'luffyliu'
 
 UPLOAD_PYOLIC = {
     'callbackUrl': 'http://zanjia.ren/upload/callback',
-    'callbackBody': 'filename=$(fname)&hash_id=$(key)&fsize=$(fsize)&imageInfo=$(imageInfo)'
+    'callbackBody': 'filename=$(fname)&hash_id=$(key)&fsize=$(fsize)&imageInfo=$(imageInfo)&tags=$(x:tags)&remark=$(x:remark)'
 }

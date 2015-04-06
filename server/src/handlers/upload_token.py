@@ -50,7 +50,7 @@ class UploadTokenHandler(BasicHandler):
     def get(self):
         if not self.check_get():
             return
-
+        print self.request.body_arguments
         token, filename = gen_token_and_filename()
         gen_uplaod_html(token, filename)
 

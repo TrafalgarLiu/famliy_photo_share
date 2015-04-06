@@ -26,3 +26,17 @@ class Photos(BaseModel):
     tags = Column('tags', VARCHAR(256))
     remark = Column('remark', VARCHAR(1024))
     upload_time = Column('upload_time', DATETIME, default=datetime.now)
+
+    @classmethod
+    def get_phots_url(cls, tags=None):
+        photos = []
+        if tags is not None:
+            tags = tags.split(',')
+            photos = cls.objects
+            for tag in tags:
+                photos = photos.filter(cls.tags.like("%{0}%".format(tag)))
+            photos = photos.all()
+        else:
+            photos = cls.objects.all()
+
+        return [p.hash_id for p in photos]
