@@ -1,9 +1,50 @@
-<form method="post" action="http://upload.qiniu.com/"
-      enctype="multipart/form-data">
-    <input name="token" type="hidden" value="{{upload_obj.token}}">
-    <input name="file" type="file" />
-    <input type="submit" value="Submit" />
-    <input name="x:remark" type="input" value="{{upload_obj.remark}}">
-    <input name="x:tags" type="input" value="{{upload_obj.tags}}">
-    <input name="key" type="hidden" value="{{upload_obj.key}}">
-</form>
+<!--<form method="post" action="http://upload.qiniu.com/"-->
+      <!--enctype="multipart/form-data">-->
+    <!--<input name="token" type="hidden" value="{{upload_obj.token}}">-->
+    <!--<input name="file" type="file" />-->
+    <!--<input name="x:remark" type="input" value="{{upload_obj.remark}}">-->
+    <!--<input name="x:tags" type="input" value="{{upload_obj.tags}}">-->
+    <!--<input name="key" type="hidden" value="{{upload_obj.key}}">-->
+    <!--<input type="submit" value="上传图片" />-->
+<!--</form>-->
+<div class="upload_wrapper">
+    <div id="canvas">
+        <div id="content">
+            <!--<div class="pageheader">-->
+            <!--<h2>上传图片</h2></div>-->
+            <div class="clear"></div>
+            <div class="form">
+
+                <form method="post" action="http://upload.qiniu.com/" enctype="multipart/form-data">
+                    <input name="token" type="hidden" value="{{upload_obj.token}}">
+                    <input name="key" type="hidden" value="{{upload_obj.key}}">
+                    <!--<div class="upload_file">-->
+                    <!--<p><span>文件名: </span>-->
+                    <!--<input type="text" name="none_use" style="width: 300px;" ng-model="none_use" readonly />-->
+                    <!--</p>-->
+                    <!--</div>-->
+                    <div class="upload_file">
+                        <p><span>给照片取个名字吧: </span>
+                            <input  name="x:remark" style="width: 300px;" value="{{upload_obj.remark}}">
+                        </p>
+                    </div>
+                    <div class="upload_file">
+                        <p><span>给照片打个标签吧: </span>
+                            <input  name="x:tags" style="width: 300px;" value="{{upload_obj.tags}}">
+                        </p>
+                    </div>
+                    <div class="upload_file">
+                        <p>
+                            <label class="show">
+                                <span>选择图片</span>
+                                <input type="file"  name="file" />
+                            </label>
+                            <input type="submit" value="上传图片" />
+                        </p>
+                    </div>
+                    <div class="clear"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

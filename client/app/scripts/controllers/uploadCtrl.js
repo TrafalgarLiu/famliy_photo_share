@@ -8,6 +8,13 @@ define(['./controllers'], function (controllers) {
         'uploadService',
 
         function ($scope, uploadService) {
+//            $scope.changes = function(){
+//                console.log("adsf");
+//                var formdata = new FormData();
+//                var form = document.forms["uploadForm"];
+//                console.log(form["filename"].files[0]);
+//                $scope.none_use = form["filename"].files[0].name;
+//            };
             var promise = uploadService.get_upload_token();
             $scope.upload_obj = {
                 remark: '',
