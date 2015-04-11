@@ -1,0 +1,24 @@
+<div class="login-page">
+	<div class="login-card">
+		<div class="avatar">
+			<img src="./img/avatar.png">
+		</div>
+		<h1>{{ pageTitle }}</h1>
+		<label class="icon user {{ nameStatu }}">
+			<input type="text" placeholder="用户名" name="username" id="username" ng-model="user.username" ng-keypress="enterDown($event)">
+			<span ng-if="nameStatu">{{ msg1 }}</span>
+		</label>
+		<label class="icon password {{ pswdStatu }}">
+			<input type="password" placeholder="密码" name="password" id="password" ng-model="user.password" ng-keypress="enterDown($event)">
+			<span ng-if="pswdStatu">{{ msg2 }}</span>
+		</label>
+		<div class="row">
+			<button class="btn" ng-click="postLogin()" ng-disabled="disabled">登录</button>
+		</div>
+	</div>
+</div>
+<div id="notice">
+	<div class="notice">
+		<div class="content"></div>
+	</div>
+</div>

@@ -1,0 +1,9 @@
+<form method="post" action="http://upload.qiniu.com/"
+      enctype="multipart/form-data">
+    <input name="token" type="hidden" value="{{upload_obj.token}}">
+    <input name="file" type="file" />
+    <input type="submit" value="Submit" />
+    <input name="x:remark" type="input" value="{{upload_obj.remark}}">
+    <input name="x:tags" type="input" value="{{upload_obj.tags}}">
+    <input name="key" type="hidden" value="{{upload_obj.key}}">
+</form>
