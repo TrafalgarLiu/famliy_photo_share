@@ -3,6 +3,10 @@ define(["./controllers"], function(controllers) {
 	controllers.controller("indexCtrl", [
 		"$scope",
 		function($scope) {
+            $scope.totalItems = 64;
+            $scope.currentPage = 4;
+            $scope.maxSize = 8;
+
             $scope.photos = [
                 {
                     full_url: '#/upload',
